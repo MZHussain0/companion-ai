@@ -8,6 +8,7 @@ import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ThemeToggle";
+import MobileSidebar from "./MobileSidebar";
 
 const font = Pacifico({
   weight: "400",
@@ -18,9 +19,9 @@ interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
   return (
-    <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary">
+    <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary h-16">
       <div className="flex items-center">
-        <MenuIcon className=" block md:hidden" />
+        <MobileSidebar />
         <Link href={"/"}>
           <h1
             className={cn(
