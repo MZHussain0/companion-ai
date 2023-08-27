@@ -16,9 +16,11 @@ const font = Pacifico({
   subsets: ["latin"],
 });
 
-interface NavbarProps {}
+interface NavbarProps {
+  isPro: boolean;
+}
 
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar: FC<NavbarProps> = ({ isPro }) => {
   const proModal = useProModal();
   return (
     <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary h-16">
@@ -36,9 +38,11 @@ const Navbar: FC<NavbarProps> = ({}) => {
       </div>
 
       <div className="flex items-center gap-x-3">
-        <Button onClick={proModal.onOpen} size="sm" variant="premium">
-          Upgrade <Sparkles className="h-4 w-4 text-white fill-white ml-2" />
-        </Button>
+        {!isPro && (
+          <Button onClick={proModal.onOpen} size="sm" variant="premium">
+            Upgrade <Sparkles className="h-4 w-4 text-white fill-white ml-2" />
+          </Button>
+        )}
         <ModeToggle />
         <UserButton afterSignOutUrl="/" />
       </div>
